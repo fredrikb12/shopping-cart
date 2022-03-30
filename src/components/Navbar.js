@@ -1,7 +1,9 @@
-import React from "react";
+import React, { useState } from "react";
 import { Link, Outlet } from "react-router-dom";
+import checkout from "../images/checkout.svg";
 
 function Navbar() {
+  const [isInShop, setIsInShop] = useState(false);
   return (
     <div className="container">
       <nav className="navbar">
@@ -13,9 +15,17 @@ function Navbar() {
           <li>
             <Link to="/shop">Shop</Link>
           </li>
+          {isInShop ? (
+            <li>
+              <button id="checkout-button"><img id="checkout-img" src={checkout} alt="cart-checkout"/></button>
+            </li>
+          ) : null}
         </ul>
       </nav>
-      <Outlet />
+      <Outlet context={setIsInShop} />
+      <footer>
+        <p>Fredrik B 2022</p>
+      </footer>
     </div>
   );
 }

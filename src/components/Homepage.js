@@ -2,10 +2,16 @@ import React from "react";
 import { useEffect, useState } from "react";
 import PokemonCard from "./PokemonCard";
 import { getPokemonArray } from "../data/pokemonData";
+import { useOutletContext } from "react-router-dom";
 
 function Homepage() {
   const [allPokemon, setAllPokemon] = useState([]);
   const [indicesToRender, setIndicesToRender] = useState([]);
+  const setIsInShop = useOutletContext();
+
+  useEffect(() => {
+    setIsInShop(false);
+  })
 
   useEffect(() => {
     /*const fetchData = async () => {

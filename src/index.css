@@ -162,6 +162,18 @@ ul {
   cursor: pointer;
 }
 
+.add-cart-button {
+  padding: 5px 10px;
+  font-size: 1.05rem;
+  background-color: hsl(66, 90%, 68%);
+  border: 1px solid rgb(241, 241, 214);
+}
+
+.add-cart-button:hover {
+  cursor: pointer;
+  background-color: #c4ff3b;
+}
+
 .amount {
   background-color: rgb(255, 217, 173);
   padding: 2px;
@@ -170,12 +182,17 @@ ul {
   height: 30px;
   text-align: center;
   border: 1px solid rgb(199, 199, 199);
-  font-size: 1.1rem;
+  font-size: 1.15rem;
   overflow-x: auto;
 }
 
 .shop-container {
+  position: relative;
+  display: grid;
+  grid-template-columns: 3fr 2fr;
   padding: 0 20px;
+  padding-bottom: 100px;
+  min-height: 90vh;
 }
 
 /* Chrome, Safari, Edge, Opera */
@@ -188,4 +205,60 @@ input::-webkit-inner-spin-button {
 /* Firefox */
 input[type="number"] {
   -moz-appearance: textfield;
+}
+
+.favorite-pokemon {
+  display: flex;
+  flex-direction: column;
+  max-width: 1000px;
+  padding-left: 50px;
+  padding-top: 50px;
+}
+
+.favorite-pokemon-container {
+  display: flex;
+  gap: 20px;
+
+  flex-wrap: wrap;
+}
+
+.clicked-pokemon {
+  margin-top: 25px;
+}
+
+.may-like-wrapper {
+  padding-top: 50px;
+  padding-left: 25px;
+  display: flex;
+  flex-direction: column;
+}
+
+.may-like-container {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  row-gap: 20px;
+}
+
+footer {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 50px;
+  background-color: rgb(202, 191, 176);
+}
+
+#checkout-img {
+  width: 30px;
+  height: 30px;
+}
+
+#checkout-button {
+  border: 1px solid rgb(97, 97, 97);
+  border-radius: 2px;
+  padding: 2px;
+  background-color: transparent;
+}
+
+#checkout-button:hover {
+  cursor: pointer;
 }

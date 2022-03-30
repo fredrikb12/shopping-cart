@@ -13,8 +13,8 @@ function Pokemon({}) {
   const willRenderPokemon = pokemon === undefined ? false : true;
   if (willRenderPokemon) {
     return (
-      <div>
-        <h1>This is the Pokemon!</h1>
+      <div className="clicked-pokemon">
+        <h1>You clicked:</h1>
         <PokemonCard
           name={pokemon.name}
           isShop={true}

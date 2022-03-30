@@ -13,6 +13,7 @@ function RouteSwitch() {
           <Route path="/shop" element={<Shop />}>
             <Route index element={<div>Index element</div>} />
             <Route path="/shop/:pokemonId" element={<Pokemon />} />
+            <Route path="/shop/checkout" element={<div></div>} />
           </Route>
         </Route>
       </Routes>
