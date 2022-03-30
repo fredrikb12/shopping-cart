@@ -6,7 +6,7 @@ function Shop() {
   const [cartItems, setCartItems] = useState({});
   const allPokemon = getPokemonArray();
 
-  const handleChangeNumberClick = (e, index, action) => {
+  /*const handleChangeNumberClick = (e, index, action) => {
     if (action === "increment") {
       setCartItems((prevItems) => {
         if (prevItems[index]) {
@@ -27,13 +27,31 @@ function Shop() {
         }
       });
     }
+  };*/
+
+  const handleAddToCart = (e, index, number) => {
+    setCartItems((prevItems) => {
+      if (prevItems[index])
+        return {
+          ...prevItems,
+          [index]:
+            parseInt(prevItems[index]) + parseInt(number) < 0
+              ? 0
+              : parseInt(prevItems[index]) + parseInt(number),
+        };
+
+      return {
+        ...prevItems,
+        [index]: parseInt(number) < 0 ? 0 : parseInt(number),
+      };
+    });
   };
 
   return (
     <main className="shop-container">
       <h1>This is the shop page!</h1>
       {console.log(cartItems)}
-      <Outlet context={handleChangeNumberClick} />
+      <Outlet context={[handleAddToCart]} />
     </main>
   );
 }

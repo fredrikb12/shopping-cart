@@ -5,7 +5,7 @@ import PokemonCard from "./PokemonCard";
 
 function Pokemon({}) {
   let params = useParams();
-  const onClick = useOutletContext();
+  const [onAddToCart] = useOutletContext();
   const pokemonArray = getPokemonArray();
   const pokemon = pokemonArray.find((el) => {
     return el.num === parseInt(params.pokemonId);
@@ -15,7 +15,11 @@ function Pokemon({}) {
     return (
       <div>
         <h1>This is the Pokemon!</h1>
-        <PokemonCard name={pokemon.name} isShop={true} onClick={onClick} />
+        <PokemonCard
+          name={pokemon.name}
+          isShop={true}
+          onAddToCart={onAddToCart}
+        />
       </div>
     );
   } else {

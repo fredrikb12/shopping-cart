@@ -1,13 +1,14 @@
 import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 
-function PokemonCard({ name, isShop, amount, onClick }) {
+function PokemonCard({ name, isShop, onClick, onAddToCart }) {
   const [pokemon, setPokemon] = useState({
     sprite: "",
     num: 0,
     species: "",
     color: "",
   });
+  const [amount, setAmount] = useState(0);
 
   useEffect(() => {
     const fetchData = async () => {
@@ -41,6 +42,18 @@ function PokemonCard({ name, isShop, amount, onClick }) {
     };
     fetchData().catch(console.error);
   }, [name]);
+
+  const handleAmountChange = (e) => {
+    setAmount(e.target.value);
+  };
+
+  const handleIncrementDecrement = (e, type) => {
+    setAmount((prevAmount) => {
+      if (type === "increment") return parseInt(prevAmount) + 1;
+      if (type === "decrement") return parseInt(prevAmount) - 1;
+    });
+  };
+
   if (!pokemon) return null;
   return (
     <div className="pokemon-card">
@@ -64,18 +77,31 @@ function PokemonCard({ name, isShop, amount, onClick }) {
       </div>
       {isShop ? (
         <div className="shop-amount-container">
+          <div className="top-button-container">
+            <button
+              className="increment-button button"
+              onClick={(e) => handleIncrementDecrement(e, "increment")}
+            >
+              +
+            </button>
+            <input
+              type="number"
+              className="amount"
+              value={amount}
+              onChange={handleAmountChange}
+            />
+            <button
+              className="decrement-button button"
+              onClick={(e) => handleIncrementDecrement(e, "decrement")}
+            >
+              -
+            </button>
+          </div>
           <button
-            className="increment-button button"
-            onClick={(e) => onClick(e, pokemon.num, "increment")}
+            className="add-cart-button"
+            onClick={(e) => onAddToCart(e, pokemon.num, amount)}
           >
-            +
-          </button>
-          <p className="amount">0</p>
-          <button
-            className="decrement-button button"
-            onClick={(e) => onClick(e, pokemon.num, "decrement")}
-          >
-            -
+            Add to Cart
           </button>
         </div>
       ) : null}
