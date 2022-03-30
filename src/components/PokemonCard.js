@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 
-function PokemonCard({ name, index }) {
+function PokemonCard({ name }) {
   const [pokemon, setPokemon] = useState({
     sprite: "",
     num: 0,
@@ -10,7 +10,7 @@ function PokemonCard({ name, index }) {
 
   useEffect(() => {
     const fetchData = async () => {
-      const pokeData = await fetch("https://graphqlpokemon.favware.tech/", {
+      const allData = await fetch("https://graphqlpokemon.favware.tech/", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -20,22 +20,23 @@ function PokemonCard({ name, index }) {
       {
         getPokemon(pokemon: ${name}) {
             sprite
-            shinySprite
             num
             species
-            color
             height
         }
       }
     `,
         }),
       });
-      const poke = await pokeData.json();
+
+      const pokeData = await allData.json();
+      if (pokeData.errors) console.log(pokeData);
 
       setPokemon(() => {
-        if(poke.errors) return null;
-        return poke.data.hasOwnProperty("getPokemon")
-          ? poke.data.getPokemon
+        console.log(pokeData.data.getPokemon);
+        if (pokeData.errors) return null;
+        return pokeData.data.hasOwnProperty("getPokemon")
+          ? pokeData.data.getPokemon
           : null;
       });
     };
@@ -44,13 +45,20 @@ function PokemonCard({ name, index }) {
   if (!pokemon) return null;
   return (
     <div className="pokemon-card">
-      <img
-        className="pokemon-image"
-        src={pokemon.sprite}
-        alt={pokemon.species}
-      />
+      {pokemon.sprite !== undefined ? (
+        <img
+          className="pokemon-image"
+          src={pokemon.sprite}
+          alt={pokemon.species}
+        />
+      ) : (
+        <p>Loading...</p>
+      )}
+      <p className="pokemon-name">
+        {pokemon.species.slice(0, 1).toUpperCase() + pokemon.species.slice(1)}
+      </p>
       <p>Height: {pokemon.height}m</p>
-      <p>Index: {index}</p>
+      <p>Index: {pokemon.num}</p>
     </div>
   );
 }
