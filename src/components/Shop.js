@@ -1,12 +1,10 @@
 import React, { useEffect, useState } from "react";
 import { Outlet, useOutletContext } from "react-router-dom";
-import { getPokemonArray } from "../data/pokemonData";
 import PokemonCard from "./PokemonCard";
 import uniqid from "uniqid";
 
 function Shop() {
   const [cartItems, setCartItems] = useState({});
-  const allPokemon = getPokemonArray();
   const favoritePokemon = [
     "charmander",
     "umbreon",

@@ -1,23 +1,12 @@
 import { useEffect, useState } from "react";
 import PokemonCard from "./PokemonCard";
 import { getPokemonArray } from "../data/pokemonData";
-import { Outlet } from "react-router-dom";
 
 function App() {
   const [allPokemon, setAllPokemon] = useState([]);
   const [indicesToRender, setIndicesToRender] = useState([]);
 
   useEffect(() => {
-    /*const fetchData = async () => {
-      const pokeData = await fetch(
-        "https://pokeapi.co/api/v2/pokemon?limit=897"
-      );
-      const data = await pokeData.json();
-      const array = data.results.reduce((returnItem, item) => {
-        return [...returnItem, { name: item.name, num: returnItem.length + 1 }];
-      }, []);
-      setAllPokemon(array);
-    };*/
 
     const pokeData = getPokemonArray();
     setAllPokemon([...pokeData]);
@@ -35,7 +24,6 @@ function App() {
       setIndicesToRender([...numbers]);
     };
     get20RandomNumbers();
-    //fetchData();
   }, []);
   return (
     <div className="pokemon-collection">

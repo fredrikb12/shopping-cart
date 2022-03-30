@@ -3,7 +3,7 @@ import { useOutletContext, useParams } from "react-router-dom";
 import { getPokemonArray } from "../data/pokemonData";
 import PokemonCard from "./PokemonCard";
 
-function Pokemon({}) {
+function Pokemon() {
   let params = useParams();
   const [onAddToCart] = useOutletContext();
   const pokemonArray = getPokemonArray();
