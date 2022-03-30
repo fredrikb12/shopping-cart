@@ -1,4 +1,4 @@
-import { BrowserRouter, Routes, Route } from "react-router-dom";
+import { BrowserRouter, Routes, Route, HashRouter } from "react-router-dom";
 import Homepage from "./Homepage";
 import Navbar from "./Navbar";
 import Pokemon from "./Pokemon";
@@ -6,7 +6,7 @@ import Shop from "./Shop";
 
 function RouteSwitch() {
   return (
-    <BrowserRouter basename="https://fredrikb12.github.io/shopping-cart">
+    <HashRouter>
       <Routes>
         <Route path="/" element={<Navbar />}>
           <Route index element={<Homepage />} />
@@ -21,7 +21,7 @@ function RouteSwitch() {
           />
         </Route>
       </Routes>
-    </BrowserRouter>
+    </HashRouter>
   );
 }
 
