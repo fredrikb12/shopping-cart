@@ -1,7 +1,8 @@
 import { BrowserRouter, Routes, Route } from "react-router-dom";
-import App from "./App";
 import Homepage from "./Homepage";
 import Navbar from "./Navbar";
+import Pokemon from "./Pokemon";
+import Shop from "./Shop";
 
 function RouteSwitch() {
   return (
@@ -9,7 +10,10 @@ function RouteSwitch() {
       <Routes>
         <Route path="/" element={<Navbar />}>
           <Route index element={<Homepage />} />
-          <Route path="/shop" element={<div>Hello from shop</div>} />
+          <Route path="/shop" element={<Shop />}>
+            <Route index element={<div>Index element</div>} />
+            <Route path="/shop/:pokemonId" element={<Pokemon />} />
+          </Route>
         </Route>
       </Routes>
     </BrowserRouter>

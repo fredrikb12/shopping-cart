@@ -39,6 +39,10 @@ function Homepage() {
   }, []);
   return (
     <main className="homepage-container">
+      <div className="welcome-headers">
+        <h1>Welcome to the Poké Shop!</h1>
+        <h2>Take a look around and buy something!</h2>
+      </div>
       <div className="pokemon-collection">
         {indicesToRender.map((index) => {
           if (allPokemon.length < 1) return null;
