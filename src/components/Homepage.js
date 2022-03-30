@@ -7,11 +7,11 @@ import { useOutletContext } from "react-router-dom";
 function Homepage() {
   const [allPokemon, setAllPokemon] = useState([]);
   const [indicesToRender, setIndicesToRender] = useState([]);
-  const setIsInShop = useOutletContext();
+  const [setIsInShop] = useOutletContext();
 
   useEffect(() => {
     setIsInShop(false);
-  })
+  });
 
   useEffect(() => {
     /*const fetchData = async () => {

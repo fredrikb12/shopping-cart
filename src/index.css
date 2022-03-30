@@ -228,15 +228,23 @@ input[type="number"] {
 
 .may-like-wrapper {
   padding-top: 50px;
-  padding-left: 25px;
+  margin-left: 50px;
+  border-radius: 100px;
   display: flex;
   flex-direction: column;
+  background-color: hsl(32, 50%, 87%);
+  flex-grow: 0;
+}
+
+.may-like-header {
+  align-self: center;
 }
 
 .may-like-container {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
   row-gap: 20px;
+  justify-items: center;
 }
 
 footer {
@@ -261,4 +269,8 @@ footer {
 
 #checkout-button:hover {
   cursor: pointer;
+}
+
+.may-like-wrapper.pokemon-card {
+  margin: auto;
 }

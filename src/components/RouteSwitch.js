@@ -6,7 +6,7 @@ import Shop from "./Shop";
 
 function RouteSwitch() {
   return (
-    <BrowserRouter>
+    <BrowserRouter basename="https://fredrikb12.github.io/shopping-cart">
       <Routes>
         <Route path="/" element={<Navbar />}>
           <Route index element={<Homepage />} />
@@ -15,6 +15,10 @@ function RouteSwitch() {
             <Route path="/shop/:pokemonId" element={<Pokemon />} />
             <Route path="/shop/checkout" element={<div></div>} />
           </Route>
+          <Route
+            path="*"
+            element={<h1>There's nothing here. Try going to the home page.</h1>}
+          />
         </Route>
       </Routes>
     </BrowserRouter>

@@ -19,7 +19,14 @@ function Shop() {
     "vulpix",
     "helioptile",
   ];
-  const mayLikePokemon = ["charizard", "blastoise", "wurmple", "geodude"];
+  const mayLikePokemon = [
+    "charizard",
+    "blastoise",
+    "wurmple",
+    "geodude",
+    "dialga",
+    "urshifu",
+  ];
   const [setIsInShop, setTotalItems] = useOutletContext();
 
   useEffect(() => {
@@ -72,7 +79,7 @@ function Shop() {
         <Outlet context={[handleAddToCart]} />
       </div>
       <div className="may-like-wrapper">
-        <h2>You May Like</h2>
+        <h2 className="may-like-header">You May Like</h2>
         <div className="may-like-container">
           {mayLikePokemon.map((pokemon) => {
             return (
