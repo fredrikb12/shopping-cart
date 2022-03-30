@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 
-function PokemonCard({ name, isShop, onClick, onAddToCart }) {
+function PokemonCard({ name, isShop, onAddToCart }) {
   const [pokemon, setPokemon] = useState({
     sprite: "",
     num: 0,

@@ -20,11 +20,19 @@ function Shop() {
     "helioptile",
   ];
   const mayLikePokemon = ["charizard", "blastoise", "wurmple", "geodude"];
-  const setIsInShop = useOutletContext();
+  const [setIsInShop, setTotalItems] = useOutletContext();
 
   useEffect(() => {
     setIsInShop(true);
   }, [setIsInShop]);
+
+  useEffect(() => {
+    let total = 0;
+    for (let prop in cartItems) {
+      total += cartItems[prop];
+    }
+    setTotalItems(total);
+  }, [cartItems, setTotalItems]);
 
   const handleAddToCart = (e, index, number) => {
     e.preventDefault();
