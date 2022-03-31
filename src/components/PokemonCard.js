@@ -40,7 +40,7 @@ function PokemonCard({ name, isShop, onAddToCart }) {
           : null;
       });
     };
-    fetchData().catch(err => console.log(err));
+    fetchData().catch((err) => console.log(err));
   }, [name]);
 
   const handleAmountChange = (e) => {
