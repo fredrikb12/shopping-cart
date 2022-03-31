@@ -1,10 +1,18 @@
-import React, {  useState } from "react";
+import React, { useEffect, useState } from "react";
 import { Link, Outlet } from "react-router-dom";
 import checkout from "../images/checkout.svg";
 
 function Navbar() {
   const [isInShop, setIsInShop] = useState(false);
   const [totalItems, setTotalItems] = useState(0);
+  const [cartItems, setCartItems] = useState({});
+  useEffect(() => {
+    let total = 0;
+    for(let prop in cartItems) {
+      total += cartItems[prop];
+    }
+    setTotalItems(total);
+  }, [cartItems]);
   return (
     <div className="container">
       <nav className="navbar">
@@ -26,7 +34,7 @@ function Navbar() {
           ) : null}
         </ul>
       </nav>
-      <Outlet context={[setIsInShop, setTotalItems]} />
+      <Outlet context={[setIsInShop, setCartItems]} />
       <footer>
         <p>Fredrik B 2022</p>
       </footer>

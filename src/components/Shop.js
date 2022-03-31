@@ -4,7 +4,6 @@ import PokemonCard from "./PokemonCard";
 import uniqid from "uniqid";
 
 function Shop() {
-  const [cartItems, setCartItems] = useState({});
   const favoritePokemon = [
     "charmander",
     "umbreon",
@@ -25,19 +24,11 @@ function Shop() {
     "dialga",
     "urshifu",
   ];
-  const [setIsInShop, setTotalItems] = useOutletContext();
+  const [setIsInShop, setCartItems] = useOutletContext();
 
   useEffect(() => {
     setIsInShop(true);
   }, [setIsInShop]);
-
-  useEffect(() => {
-    let total = 0;
-    for (let prop in cartItems) {
-      total += cartItems[prop];
-    }
-    setTotalItems(total);
-  }, [cartItems, setTotalItems]);
 
   const handleAddToCart = (e, index, number) => {
     e.preventDefault();
