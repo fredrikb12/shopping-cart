@@ -72,6 +72,11 @@ describe("PokemonCard component", () => {
     expect(parseInt(input.value)).toBe(0);
     userEvent.type(input, "123");
     expect(parseInt(input.value)).toBe(123);
+    userEvent.clear(input);
+    userEvent.type(input, "-5");
+    expect(parseInt(input.value)).toBe(-5);
+
+    
 
   });
 });
