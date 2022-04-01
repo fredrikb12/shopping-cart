@@ -5,24 +5,24 @@ import uniqid from "uniqid";
 
 function Shop() {
   const favoritePokemon = [
-    "charmander",
-    "umbreon",
-    "vaporeon",
-    "squirtle",
-    "zapdos",
-    "bulbasaur",
-    "gyarados",
-    "sylveon",
-    "vulpix",
-    "helioptile",
+    { name: "charmander", id: 4 },
+    { name: "umbreon", id: 197 },
+    { name: "vaporeon", id: 134 },
+    { name: "squirtle", id: 7 },
+    { name: "zapdos", id: 145 },
+    { name: "bulbasaur", id: 1 },
+    { name: "gyarados", id: 130 },
+    { name: "sylveon", id: 700 },
+    { name: "vulpix", id: 37 },
+    { name: "helioptile", id: 694 },
   ];
   const mayLikePokemon = [
-    "charizard",
-    "blastoise",
-    "wurmple",
-    "geodude",
-    "dialga",
-    "urshifu",
+    { name: "charizard", id: 6 },
+    { name: "blastoise", id: 9 },
+    { name: "wurmple", id: 265 },
+    { name: "geodude", id: 74 },
+    { name: "dialga", id: 483 },
+    { name: "urshifu", id: 892 },
   ];
   const [setIsInShop, setCartItems] = useOutletContext();
 
@@ -57,10 +57,10 @@ function Shop() {
           {favoritePokemon.map((pokemon) => {
             return (
               <PokemonCard
-                name={pokemon}
+                name={pokemon.name}
                 isShop={true}
                 onAddToCart={handleAddToCart}
-                key={uniqid()}
+                key={pokemon.id}
               />
             );
           })}
@@ -73,10 +73,10 @@ function Shop() {
           {mayLikePokemon.map((pokemon) => {
             return (
               <PokemonCard
-                name={pokemon}
+                name={pokemon.name}
                 isShop={true}
                 onAddToCart={handleAddToCart}
-                key={uniqid()}
+                key={pokemon.id}
               />
             );
           })}
